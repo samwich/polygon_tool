@@ -1,0 +1,136 @@
+=============================================================================
+Project:   PolygonTool
+Copyright: ©2009 Samuel Johnson
+=============================================================================
+
+Map polygon creator
+
+Polygon Creator has 3 different modes: 
+  Point creation / editing
+  Line creation / editing
+  Polygon creation / editing
+
+UI
+large map view area. points, lines, and polygons will be displayed on the map
+item list with 3 tabs
+  points on screen (or maybe points that are members of lines or polygons that are on screen?)
+  lines on screen
+  polygons on screen
+editing pane - to edit the currently selected element
+  point editor - drag/drop, save, cancel, delete
+  line editor - redraw line, save, cancel, assign to block, delete
+  polygon editor - redraw polygon, save, cancel, assign to block face, delete
+
+data structures
+Points - latitude/longitude pairs
+Lines - ordered groups of points
+Polygons - ordered groups of points where first and last points are connected
+
+Lines can be used for displaying blocks
+Polygons can be used for grouping locations
+
+pseudocode / workflow:
+
+Mode selection
+  the user may switch between point, line, and polygon modes at any time
+
+Points mode:
+  click on map to add new point
+    create new Point object
+    display a placemark on the map with the visual style 'unsaved, selected'
+    add the Point to the item list
+    display the Point in the editing pane so that the user can Save it
+      if the user Saves:
+        change the placemark visual style to 'saved, selected'
+      if the user Cancels:
+        destroy the Point object which will remove it from the map, list, and editor
+      if the user Deletes:
+        refuse to delete the Point if it is a member of any line or polygon
+        provide feedback showing which lines and polygons that the Point is a member of
+        remove the placemark from the map
+        provide undo?
+  click and drag a point to move it
+    move the placemark on the map
+    change the placemark's visual style to 'unsaved, selected'
+    put a line segment on the map that goes from the original location to the new location
+    change the visual style of every line segment that is attached to the point (parts of Lines and Polygons)
+    if the user Saves:
+      change the placemark's visual style to 'saved, selected'
+      update the polygons and lines that have the Point as a member
+    if the user Cancels:
+      move the placemark to the its original location
+      change it's visual style to 'saved, selected'
+  mouse-over an item in the list to highlight the Point on the map
+
+Lines mode:
+  click on several Points on the map in-order to create a line
+    add a new Line to the item list
+    draw a line segment with the visual style 'unsaved, selected' to connect each point to the previous one as it's clicked
+    draw a line segment from the last Point to the current mouse location?
+    add each Point to the editing pane as it is clicked
+    warn the user if any Point is added to the line twice - should it just refuse?
+    change the visual style of the Point as it's added?
+    disable the Save feature until at least 2 Points have been added
+    if the user Saves:
+      change the Line's visual style to 'saved, selected'
+    if the user Cancels:
+      destroy the Line object which will remove it from the map, list, and editor
+    if the user chooses to redraw the Line:
+      change the visual style of the line to something more subdued
+      allow the user to draw a new line
+      if the user Saves:
+        remove the old line from the map
+        change the visual style of the new line
+      if the user Cancels:
+        remove the new line from the map
+        change the visual style of the old line back to 'saved, selected'
+    if the user deletes the line:
+      destroy the line object, removing the line from the map
+  assign to block:
+    somehow select a block by name in the editing pane
+    allow user to save or cancel
+  mouse-over an item in the list to highlight the Line on the map
+
+Polygons mode
+  exactly line Lines mode except:
+    disable the Save feature until at least 3 Points have been added and the first Point is also the last point
+    possibly have an auto-close feature that draws a broken line from the last point to the first point and make the line solid once the Polygon has been saved
+
+
+PolygonTool.Point
+PolygonTool.Line
+PolygonTool.Polygon
+
+UI:
+pane at top contains
+  mode selection buttons, settings
+pane at left contains
+  top: item list, bottom: editing area
+pane at right contains
+  map
+
+visiblePoints collection
+visibleLines collection
+visiblePolygons collection
+
+Points storage
+Lines storage
+Polygons storage
+
+mapView
+  creates and updates placemarks, polylines, polygons for things in the visibleXxx collections (bound to those collections through controllers)
+  passes clicks back to the Point, Line, or Polygon that is clicked
+  mapView might have numerous child pointViews, lineViews, polygonViews
+
+listView
+  multiple itemViews beneath
+
+editorView
+
+modeSelectorView
+
+mapController
+
+a xListController for each collection of objects (probably an ArrayController)
+
+editorController

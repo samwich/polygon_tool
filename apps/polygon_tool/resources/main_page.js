@@ -29,8 +29,8 @@ PolygonTool.mainPage = SC.Page.design({
     mapPane: SC.ScrollView.design({
       hasHorizontalScroller: NO,
       hasVerticalScroller: NO,
-      layout: { top: 36, bottom: 0, right: 0 },
-      backgroundColor: 'white'
+      layout: { top: 36, bottom: 0,left: 200, right: 0 },
+      backgroundColor: 'gray'
     }),
 
     listView: SC.ScrollView.design({
@@ -49,6 +49,7 @@ PolygonTool.mainPage = SC.Page.design({
       hasHorizontalScroller: NO,
       hasVerticalScroller: NO,
       layout: { bottom: 0, height: 200, width: 200 },
+      backgroundColor: 'white'
     })
 
     

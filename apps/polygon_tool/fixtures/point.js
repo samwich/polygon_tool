@@ -8,28 +8,24 @@ sc_require('models/point');
 
 PolygonTool.Point.FIXTURES = [
 
-  // TODO: Add your data fixtures here.
-  // All fixture records must have a unique primary key (default 'guid').  See 
-  // the example below.
+  { "guid": "point-1",
+    "latitude": 40,
+    "longitude": 123 },
 
-  // { guid: 1,
-  //   firstName: "Michael",
-  //   lastName: "Scott" },
-  //
-  // { guid: 2,
-  //   firstName: "Dwight",
-  //   lastName: "Schrute" },
-  //
-  // { guid: 3,
-  //   firstName: "Jim",
-  //   lastName: "Halpert" },
-  //
-  // { guid: 4,
-  //   firstName: "Pam",
-  //   lastName: "Beesly" },
-  //
-  // { guid: 5,
-  //   firstName: "Ryan",
-  //   lastName: "Howard" }
+  { "guid": "point-2",
+    "latitude": 41,
+    "longitude": 124 },
+
+  { "guid": "point-3",
+    "latitude": 42,
+    "longitude": 125 },
+
+  { "guid": "point-4",
+    "latitude": 43,
+    "longitude": 126 },
+
+  { "guid": "point-5",
+    "latitude": 44,
+    "longitude": 127 }
 
 ];

@@ -14,6 +14,11 @@
 PolygonTool.Point = SC.Record.extend(
 /** @scope PolygonTool.Point.prototype */ {
 
-  // TODO: Add your own code here.
+  latitude: SC.Record.attr(Number),
+  longitude: SC.Record.attr(Number),
+
+  summary: function () {
+    return this.get("guid") + ": " + this.get("latitude") + ", " + this.get("longitude");
+  }.property("latitude", "longitude").cacheable()
 
 }) ;

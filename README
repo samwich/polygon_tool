@@ -134,3 +134,7 @@ mapController
 a xListController for each collection of objects (probably an ArrayController)
 
 editorController
+
+MapModel
+  data structures to store GMap* objects that are on the map
+  methods to add and remove items to/from the data structures

@@ -11,7 +11,7 @@ PolygonTool.mainPage = SC.Page.design({
   // Add childViews to this pane for views to display immediately on page 
   // load.
   mainPane: SC.MainPane.design({
-    childViews: 'mapPane topView leftView'.w(),
+    childViews: 'mapPane topView listView editView'.w(),
     
     topView: SC.ToolbarView.design({
       layout: { top: 0, left: 0, right: 0, height: 36 },
@@ -32,30 +32,21 @@ PolygonTool.mainPage = SC.Page.design({
       layout: { top: 36, bottom: 0, right: 0 },
       backgroundColor: 'white'
     }),
+
+    listView: SC.ScrollView.design({
+      hasHorizontalScroller: NO,
+      layout: { top: 36, width: 200 },
+      // contentBinding: 'PolygonTool.pointsController.arrangedObjects',
+      // selectionBinding: 'PolygonTool.pointsController.selection'
+      rowHeight: 30
+    }),
     
-    leftView: SC.ScrollView.design({
+    editView: SC.ScrollView.design({
       hasHorizontalScroller: NO,
       hasVerticalScroller: NO,
-      layout: { left: 0, top: 36, bottom: 0, width: 200 },
-      backgroundColor: "yellow",
-      childViews: "listView editView".w(),
-      
-      listView: SC.ScrollView.design({
-        hasHorizontalScroller: NO,
-        // layout: { bottom: 200 },
-        backgroundColor: 'green',
-        // contentBinding: 'PolygonTool.pointsController.arrangedObjects',
-        // selectionBinding: 'PolygonTool.pointsController.selection'
-        rowHeight: 30
-      }),
-      
-      editView: SC.ScrollView.design({
-        hasHorizontalScroller: NO,
-        hasVerticalScroller: NO,
-        layout: { height: 200 },
-        backgroundColor: 'blue'
-      })
+      layout: { bottom: 0, height: 200, width: 200 },
     })
+
     
   })
 

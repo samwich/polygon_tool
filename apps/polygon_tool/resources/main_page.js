@@ -11,14 +11,52 @@ PolygonTool.mainPage = SC.Page.design({
   // Add childViews to this pane for views to display immediately on page 
   // load.
   mainPane: SC.MainPane.design({
-    childViews: 'labelView'.w(),
+    childViews: 'mapPane topView leftView'.w(),
     
-    labelView: SC.LabelView.design({
-      layout: { centerX: 0, centerY: 0, width: 200, height: 18 },
-      textAlign: SC.ALIGN_CENTER,
-      tagName: "h1", 
-      value: "Welcome to SproutCore!"
+    topView: SC.ToolbarView.design({
+      layout: { top: 0, left: 0, right: 0, height: 36 },
+      childViews: 'labelView'.w(),
+      anchorLocation: SC.ANCHOR_TOP,
+      
+      labelView: SC.LabelView.design({
+        layout: { centerY: 0, height: 24, left: 8, width: 200 },
+        controlSize: SC.LARGE_CONTROL_SIZE,
+        fontWeight: SC.BOLD_WEIGHT,
+        value: "Polygon Tool"
+      })
+    }),
+    
+    mapPane: SC.ScrollView.design({
+      hasHorizontalScroller: NO,
+      hasVerticalScroller: NO,
+      layout: { top: 36, bottom: 0, right: 0 },
+      backgroundColor: 'white'
+    }),
+    
+    leftView: SC.ScrollView.design({
+      hasHorizontalScroller: NO,
+      hasVerticalScroller: NO,
+      layout: { left: 0, top: 36, bottom: 0, width: 200 },
+      backgroundColor: "yellow",
+      childViews: "listView editView".w(),
+      
+      listView: SC.ScrollView.design({
+        hasHorizontalScroller: NO,
+        // layout: { bottom: 200 },
+        backgroundColor: 'green',
+        // contentBinding: 'PolygonTool.pointsController.arrangedObjects',
+        // selectionBinding: 'PolygonTool.pointsController.selection'
+        rowHeight: 30
+      }),
+      
+      editView: SC.ScrollView.design({
+        hasHorizontalScroller: NO,
+        hasVerticalScroller: NO,
+        layout: { height: 200 },
+        backgroundColor: 'blue'
+      })
     })
+    
   })
 
 });

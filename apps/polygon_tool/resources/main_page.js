@@ -35,10 +35,14 @@ PolygonTool.mainPage = SC.Page.design({
 
     listView: SC.ScrollView.design({
       hasHorizontalScroller: NO,
-      layout: { top: 36, width: 200 },
-      // contentBinding: 'PolygonTool.pointsController.arrangedObjects',
-      // selectionBinding: 'PolygonTool.pointsController.selection'
-      rowHeight: 30
+      // layout: { top: 36, left: 0, width: 200 },
+      layout: { top: 36, left: 0 },
+
+      contentView: SC.ListView.design({
+        contentBinding: 'PolygonTool.pointsController.arrangedObjects',
+        selectionBinding: 'PolygonTool.pointsController.selection',
+        contentValueKey: "summary"
+      })
     }),
     
     editView: SC.ScrollView.design({

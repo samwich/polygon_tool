@@ -21,6 +21,8 @@ PolygonTool.main = function main() {
 
   // Step 2. Set the content property on your primary controller.
   // This will make your app come alive!
+  var points = PolygonTool.store.find(PolygonTool.Point);
+  PolygonTool.pointsController.set('content', points);
 
   // TODO: Set the content property on your primary controller
   // ex: PolygonTool.contactsController.set('content',PolygonTool.contacts);

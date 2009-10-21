@@ -1,6 +1,6 @@
 // ==========================================================================
 // Project:   PolygonTool.Point
-// Copyright: ©2009 My Company, Inc.
+// Copyright: ©2009 Samuel Johnson
 // ==========================================================================
 /*globals PolygonTool */
 

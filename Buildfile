@@ -1,6 +1,6 @@
 # ===========================================================================
 # Project:   PolygonTool
-# Copyright: ©2009 My Company, Inc.
+# Copyright: ©2009 Samuel Johnson
 # ===========================================================================
 
 # Add initial buildfile information here

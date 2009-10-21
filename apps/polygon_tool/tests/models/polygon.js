@@ -1,6 +1,6 @@
 // ==========================================================================
 // Project:   PolygonTool.Polygon Unit Test
-// Copyright: ©2009 My Company, Inc.
+// Copyright: ©2009 Samuel Johnson
 // ==========================================================================
 /*globals PolygonTool module test ok equals same stop start */
 

@@ -42,18 +42,18 @@ PolygonTool.GMapView = SC.View.extend(
   setUIToDefault: function () {
     this.get("mapObject").setUIToDefault();
   },
-  
+
   gMapClickDidOccur: function (context, gLatLng) {
-    // ignore clicks on overlays. we'll (probably) let the overlay handle its event
+    // ignore clicks on overlays. we'll (probably) let the overlay handle its events
     if (context) {
       return;
     } else {
       this.mapClickDidOccurWithoutOverlay(gLatLng);
     }
   },
-  
+
   mapClickDidOccurWithoutOverlay: function (gLatLng) {
-    alert("map click! " + gLatLng);
+    PolygonTool.gMapController.mapClickDidOccurWithoutOverlay(gLatLng);
   }
 
 });

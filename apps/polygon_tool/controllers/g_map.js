@@ -19,6 +19,15 @@ PolygonTool.gMapController = SC.Object.create(
 
   mapView: function () {
     return PolygonTool.mainPage.mainPane.mapView;
+  },
+
+  mapClickDidOccurWithoutOverlay: function (gLatLng) {
+    var latitude = gLatLng.lat();
+    var longitude = gLatLng.lng();
+    var point = PolygonTool.store.createRecord(PolygonTool.Point, {
+      "latitude": latitude,
+      "longitude": longitude
+    });
   }
 
 }) ;

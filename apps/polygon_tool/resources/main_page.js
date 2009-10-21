@@ -11,11 +11,11 @@ PolygonTool.mainPage = SC.Page.design({
   // Add childViews to this pane for views to display immediately on page 
   // load.
   mainPane: SC.MainPane.design({
-    childViews: 'mapPane topView listView editView'.w(),
+    childViews: 'mapView topView listView editView'.w(),
     
     topView: SC.ToolbarView.design({
       layout: { top: 0, left: 0, right: 0, height: 36 },
-      childViews: 'labelView'.w(),
+      childViews: 'labelView buttonView'.w(),
       anchorLocation: SC.ANCHOR_TOP,
       
       labelView: SC.LabelView.design({
@@ -23,20 +23,24 @@ PolygonTool.mainPage = SC.Page.design({
         controlSize: SC.LARGE_CONTROL_SIZE,
         fontWeight: SC.BOLD_WEIGHT,
         value: "Polygon Tool"
+      }),
+
+      buttonView: SC.ButtonView.design({
+        layout: { centerY: 0, right: 10, height: 24, width: 100 },
+        title: "Load Map",
+        target: "PolygonTool.gMapController",
+        action: "initMap"
       })
     }),
     
-    mapPane: SC.ScrollView.design({
-      hasHorizontalScroller: NO,
-      hasVerticalScroller: NO,
+    mapView: PolygonTool.GMapView.design({
       layout: { top: 36, bottom: 0,left: 200, right: 0 },
       backgroundColor: 'gray'
     }),
 
     listView: SC.ScrollView.design({
       hasHorizontalScroller: NO,
-      // layout: { top: 36, left: 0, width: 200 },
-      layout: { top: 36, left: 0 },
+      layout: { top: 36, left: 0, width: 200 },
 
       contentView: SC.ListView.design({
         contentBinding: 'PolygonTool.pointsController.arrangedObjects',
@@ -51,7 +55,6 @@ PolygonTool.mainPage = SC.Page.design({
       layout: { bottom: 0, height: 200, width: 200 },
       backgroundColor: 'white'
     })
-
     
   })
 

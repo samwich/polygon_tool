@@ -52,7 +52,7 @@ PolygonTool.mainPage = SC.Page.design({
     editView: SC.ScrollView.design({
       hasHorizontalScroller: NO,
       hasVerticalScroller: NO,
-      layout: { bottom: 0, height: 200, width: 200 },
+      layout: { bottom: 0, height: 100, width: 200 },
       backgroundColor: 'white'
     })
     

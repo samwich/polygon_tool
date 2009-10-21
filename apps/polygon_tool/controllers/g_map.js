@@ -21,6 +21,11 @@ PolygonTool.gMapController = SC.Object.create(
     return PolygonTool.mainPage.mainPane.mapView;
   },
 
+  // The gMapView binds to these:
+  points: '',
+  lines: '',
+  polygons: '',
+
   mapClickDidOccurWithoutOverlay: function (gLatLng) {
     var latitude = gLatLng.lat();
     var longitude = gLatLng.lng();

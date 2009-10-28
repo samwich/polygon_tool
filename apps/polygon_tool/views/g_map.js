@@ -2,7 +2,7 @@
 // Project:   PolygonTool.GMapView
 // Copyright: ©2009 Samuel Johnson
 // ==========================================================================
-/*globals PolygonTool */
+/*globals PolygonTool GBrowserIsCompatible GEvent GLatLng GMap2 */
 
 /** @class
 

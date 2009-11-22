@@ -33,6 +33,11 @@ PolygonTool.gMapController = SC.Object.create(
       "latitude": latitude,
       "longitude": longitude
     });
+  },
+
+  mapClickDidOccurWithOverlay: function (overlay) {
+    // lookup the correct point/line/polygon object for the overlay
+    // select the object
   }
 
 }) ;

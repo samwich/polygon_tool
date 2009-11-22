@@ -10,8 +10,13 @@
 
   @extends SC.View
 */
+// maybe should be called GMapContainerView
 PolygonTool.GMapView = SC.View.extend(
 /** @scope PolygonTool.GMapView.prototype */ {
+
+  // didCreateLayer: function () {
+  //   this.initMap();
+  // },
 
   initMap: function () {
     var mapCanvasId = this.get("layerId");
@@ -46,10 +51,14 @@ PolygonTool.GMapView = SC.View.extend(
   gMapClickDidOccur: function (context, gLatLng) {
     // ignore clicks on overlays. we'll (probably) let the overlay handle its events
     if (context) {
-      return;
+      this.mapClickDidOccurWithOverlay(context);
     } else {
       this.mapClickDidOccurWithoutOverlay(gLatLng);
     }
+  },
+
+  mapClickDidOccurWithOverlay: function (overlay) {
+    PolygonTool.gMapController.mapClickDidOccurWithOverlay(overlay);
   },
 
   mapClickDidOccurWithoutOverlay: function (gLatLng) {

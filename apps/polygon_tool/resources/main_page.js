@@ -35,10 +35,7 @@ PolygonTool.mainPage = SC.Page.design({
     
     mapView: PolygonTool.GMapView.design({
       layout: { top: 36, bottom: 0,left: 200, right: 0 },
-      backgroundColor: 'gray'//,
-      // pointContentBinding: 'PolygonTool.gMapController.points',
-      // lineContentBinding: 'PolygonTool.gMapController.lines',
-      // polygonContentBinding: 'PolygonTool.gMapController.polygons',
+      backgroundColor: 'gray'
     }),
 
     listView: SC.ScrollView.design({

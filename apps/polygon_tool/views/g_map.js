@@ -14,10 +14,6 @@
 PolygonTool.GMapView = SC.View.extend(
 /** @scope PolygonTool.GMapView.prototype */ {
 
-  // didCreateLayer: function () {
-  //   this.initMap();
-  // },
-
   initMap: function () {
     var mapCanvasId = this.get("layerId");
 
@@ -35,19 +31,6 @@ PolygonTool.GMapView = SC.View.extend(
     }
   },
 
-  setCenterToSFBay: function () {
-    this.setCenter(37.79, -122.35, 11);
-  },
-
-  setCenter: function (latitude, longitude, zoom) {
-    var point = new GLatLng(latitude, longitude);
-    this.get("mapObject").setCenter(point, zoom);
-  },
-
-  setUIToDefault: function () {
-    this.get("mapObject").setUIToDefault();
-  },
-
   gMapClickDidOccur: function (context, gLatLng) {
     // ignore clicks on overlays. we'll (probably) let the overlay handle its events
     if (context) {
@@ -63,6 +46,19 @@ PolygonTool.GMapView = SC.View.extend(
 
   mapClickDidOccurWithoutOverlay: function (gLatLng) {
     PolygonTool.gMapController.mapClickDidOccurWithoutOverlay(gLatLng);
+  },
+
+  setCenterToSFBay: function () {
+    this.setCenter(37.79, -122.35, 11);
+  },
+
+  setCenter: function (latitude, longitude, zoom) {
+    var point = new GLatLng(latitude, longitude);
+    this.get("mapObject").setCenter(point, zoom);
+  },
+
+  setUIToDefault: function () {
+    this.get("mapObject").setUIToDefault();
   }
 
 });

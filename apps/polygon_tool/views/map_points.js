@@ -28,7 +28,12 @@ PolygonTool.MapPointsView = SC.Object.extend(
     // Default Does Nothing
   },
 
-  render: function(context, firstTime) {
+  reloadIfNeeded: function() {
+    // remove all exampleViews
+    self.get("content").forEach(function (item, index, enumerable) {
+      console.log("deleting" + item.get("latitude"));
+    },
+    self);
     // create an exampleView for each item in content
     // get the list of items in content
     // iterate through items

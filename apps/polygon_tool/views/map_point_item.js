@@ -20,6 +20,10 @@ PolygonTool.MapPointItemView = SC.Object.extend(
     // create a gLatLon from point
     // create an overlay with gLatLon
     // add the overlay to the map
+  },
+  
+  remove: function () {
+    // remove the overlay from the map
   }
 
 });

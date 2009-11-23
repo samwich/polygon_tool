@@ -17,6 +17,9 @@ PolygonTool.gMapController = SC.Object.create(
     this.mapView().initMap();
   },
 
+  // [lat1, lon1, lat2, lon2]
+  mapBounds: [1, 2, 3, 4],
+
   mapView: function () {
     return PolygonTool.mainPage.mainPane.mapView;
   },

@@ -14,7 +14,8 @@ PolygonTool.gMapController = SC.Object.create(
 /** @scope PolygonTool.gMapController.prototype */ {
 
   initMap: function () {
-    this.mapView().initMap();
+    this.get("mapView").initMap();
+    this.updatePlacemarks();
   },
 
   // [lat1, lon1, lat2, lon2]
@@ -22,7 +23,7 @@ PolygonTool.gMapController = SC.Object.create(
 
   mapView: function () {
     return PolygonTool.mainPage.mainPane.mapView;
-  },
+  }.property().cacheable(),
 
   // The gMapView binds to these:
   pointsBinding: 'PolygonTool.pointsController.visiblePoints',
@@ -36,11 +37,21 @@ PolygonTool.gMapController = SC.Object.create(
       "latitude": latitude,
       "longitude": longitude
     });
+    this.updatePlacemarks();
   },
 
   mapClickDidOccurWithOverlay: function (overlay) {
     // lookup the correct point/line/polygon object for the overlay
     // select the object
+  },
+
+  updatePlacemarks: function () {
+    var points = this.get("points");
+    // This is clearly overkill. We're removing all overlays on each update.
+    this.get("mapView").get("mapObject").clearOverlays();
+    points.forEach(function (item, index, enumerable) {
+      this.get("mapView").addPlacemark(item);
+    }, this);
   }
 
 }) ;

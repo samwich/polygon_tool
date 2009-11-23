@@ -37,13 +37,18 @@ PolygonTool.gMapController = SC.Object.create(
       "latitude": latitude,
       "longitude": longitude
     });
-    this.updatePlacemarks();
   },
 
   mapClickDidOccurWithOverlay: function (overlay) {
     // lookup the correct point/line/polygon object for the overlay
     // select the object
   },
+
+  pointsDidChange: function () {
+    if (this.get("mapView") && this.get("mapView").mapObject) {
+      this.updatePlacemarks();
+    }
+  }.observes("points"),
 
   updatePlacemarks: function () {
     var points = this.get("points");

@@ -138,3 +138,27 @@ editorController
 MapModel
   data structures to store GMap* objects that are on the map
   methods to add and remove items to/from the data structures
+
+
+Helpful advice from B.S.Navin, on the SproutCore mailing list:
+  Hi Sam, 
+
+  I too am exploring something similar & ran into the same problem. The 
+  concept of a non-Dom view does not exist in sproutcore. And if you create 
+  your own custom view object that does not include SC.View, it will not be 
+  able to take part in the view hierarchy, as CollectionView expects an 
+  SC.View object as its exampleView. 
+  I explored 2 options: 
+  1. Use SC.CollectionView with SC.View as an exampleView & set the width & 
+  height of both to 0. That way, they will be part of the view hierarchy, but 
+  be invisible. 
+  2. Make gmapsController responsible for managing the actual google maps api 
+  (including creation of the map & adding/removing markers). So 
+  gmapsController becomes the interface to google maps. Then, use 
+  pointsController as the marker manager. pointsController listens for changes 
+  to the array of points & also observes for changes to the latitude & 
+  longitude property of each point & sets the changed values to the GMarker 
+  object. 
+  The first approach looks simpler, but whether the additional load on the 
+  view hierarchy is desirable or not is something you need to decide. 
+  - Navin

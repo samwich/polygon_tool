@@ -40,7 +40,7 @@ PolygonTool.mainPage = SC.Page.design({
 
     listView: SC.ScrollView.design({
       hasHorizontalScroller: NO,
-      layout: { top: 36, left: 0, width: 200 },
+      layout: { top: 36, bottom: 100, left: 0, width: 200 },
 
       contentView: SC.ListView.design({
         contentBinding: 'PolygonTool.pointsController.arrangedObjects',

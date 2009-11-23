@@ -22,7 +22,7 @@ PolygonTool.gMapController = SC.Object.create(
   },
 
   // The gMapView binds to these:
-  pointsBinding: 'PolygonTool.pointsController.content',
+  pointsBinding: 'PolygonTool.pointsController.visiblePoints',
   lines: '',
   polygons: '',
 

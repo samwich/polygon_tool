@@ -13,6 +13,8 @@
 PolygonTool.pointsController = SC.ArrayController.create(
 /** @scope PolygonTool.pointsController.prototype */ {
 
-  
+  visiblePoints: function () {
+    return this.get("points");
+  }.property()
 
 }) ;

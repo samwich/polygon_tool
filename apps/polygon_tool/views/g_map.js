@@ -2,7 +2,7 @@
 // Project:   PolygonTool.GMapView
 // Copyright: ©2009 Samuel Johnson
 // ==========================================================================
-/*globals PolygonTool GBrowserIsCompatible GEvent GLatLng GMap2 */
+/*globals PolygonTool GBrowserIsCompatible GEvent GLatLng GMap2 GMarker */
 
 /** @class
 
@@ -13,6 +13,23 @@
 // maybe should be called GMapContainerView
 PolygonTool.GMapView = SC.View.extend(
 /** @scope PolygonTool.GMapView.prototype */ {
+
+  addOverlay: function (overlay) {
+    this.get("mapObject").addOverlay(overlay);
+  },
+
+  addPlacemark: function (point) {
+    var placemark = this.createPlacemark(point);
+    this.addOverlay(placemark);
+  },
+
+  createPlacemark: function (point) {
+    var latitude = point.get("latitude"),
+        longitude = point.get("longitude"),
+        gLatLng = new GLatLng(latitude, longitude),
+        gMarker = new GMarker(gLatLng);
+    return gMarker;
+  },
 
   initMap: function () {
     var mapCanvasId = this.get("layerId");
@@ -32,7 +49,6 @@ PolygonTool.GMapView = SC.View.extend(
   },
 
   gMapClickDidOccur: function (context, gLatLng) {
-    // ignore clicks on overlays. we'll (probably) let the overlay handle its events
     if (context) {
       this.mapClickDidOccurWithOverlay(context);
     } else {

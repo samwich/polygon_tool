@@ -16,7 +16,7 @@ PolygonTool.pointsController = SC.ArrayController.create(
   mapBoundsBinding: "PolygonTool.gMapController.",
 
   visiblePoints: function () {
-    return this.get("points");
-  }.property()
+    return this.get("content");
+  }.property("content")
 
 }) ;

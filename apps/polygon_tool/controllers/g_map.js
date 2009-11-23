@@ -48,7 +48,7 @@ PolygonTool.gMapController = SC.Object.create(
     if (this.get("mapView") && this.get("mapView").mapObject) {
       this.updatePlacemarks();
     }
-  }.observes("points"),
+  }.observes("*points.[]"),
 
   updatePlacemarks: function () {
     var points = this.get("points");

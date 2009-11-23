@@ -15,7 +15,7 @@ PolygonTool.gMapController = SC.Object.create(
 
   initMap: function () {
     this.get("mapView").initMap();
-    this.updatePlacemarks();
+    this.pointsDidChange();
   },
 
   // [lat1, lon1, lat2, lon2]

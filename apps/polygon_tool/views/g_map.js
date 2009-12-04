@@ -65,7 +65,7 @@ PolygonTool.GMapView = SC.View.extend(
   },
 
   setCenterToSFBay: function () {
-    this.setCenter(37.79, -122.35, 11);
+    this.setCenter(37.79, -122.39, 11);
   },
 
   setCenter: function (latitude, longitude, zoom) {

@@ -33,10 +33,51 @@ PolygonTool.gMapController = SC.Object.create(
   mapClickDidOccurWithoutOverlay: function (gLatLng) {
     var latitude = gLatLng.lat();
     var longitude = gLatLng.lng();
-    var point = PolygonTool.store.createRecord(PolygonTool.Point, {
+    this.mapClick(latitude, longitude);
+  },
+
+  toolModeBinding: "PolygonTool.mainPage.mainPane.topView.toolChooserView.value",
+
+  toolModeDidChange: function () {
+    var toolMode = this.get("toolMode")
+    if (toolMode == "select") {
+      // change cursor to pointer
+      this.mapClick = this.mapClickNoop;
+      this.markerClick = null;
+    } else if (toolMode == "point") {
+      // change cursor to crosshairs for map, pointer for overlays
+      this.mapClick = this.createPoint;
+      this.markerClick = null; // add pointer to selection
+    } else if (toolMode == "line") {
+      // change cursor to drag-hand for map, pointer for overlays
+      this.mapClick = this.mapClickNoop;
+      this.markerClick = null; // this.addPointToLine()
+    } else if (toolMode == "polygon") {
+      // change cursor to drag-hand for map, pointer for overlays
+      this.mapClick = this.mapClickNoop;
+      this.markerClick = null; // this.addPointToPolygon()
+    } else {
+      // change cursor to X
+      this.mapClick = this.mapClickNoop;
+      this.markerClick = null;
+    };
+  }.observes("toolMode"),
+
+  mapClick: function (latitude, longitude) {
+    // alert("old mapClick");
+  },
+
+  markerClick: function () {},
+
+  createPoint: function (latitude, longitude) {
+    PolygonTool.store.createRecord(PolygonTool.Point, {
       "latitude": latitude,
       "longitude": longitude
     });
+  },
+
+  mapClickNoop: function (latitude, longitude) {
+    // alert("mapClickNoop");
   },
 
   mapClickDidOccurWithOverlay: function (overlay) {

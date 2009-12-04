@@ -15,7 +15,7 @@ PolygonTool.mainPage = SC.Page.design({
     
     topView: SC.ToolbarView.design({
       layout: { top: 0, left: 0, right: 0, height: 36 },
-      childViews: 'labelView buttonView'.w(),
+      childViews: 'labelView toolChooserView loadMapButtonView'.w(),
       anchorLocation: SC.ANCHOR_TOP,
       
       labelView: SC.LabelView.design({
@@ -25,7 +25,13 @@ PolygonTool.mainPage = SC.Page.design({
         value: "Polygon Tool"
       }),
 
-      buttonView: SC.ButtonView.design({
+      toolChooserView: SC.SegmentedView.design({
+        layout: { centerY: 0, right: 120, height: 24, width: 250 },
+        items: "select point line polygon".w(),
+        value: "select" // set default
+      }),
+
+      loadMapButtonView: SC.ButtonView.design({
         layout: { centerY: 0, right: 10, height: 24, width: 100 },
         title: "Load Map",
         target: "PolygonTool.gMapController",
